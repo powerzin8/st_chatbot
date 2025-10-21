@@ -19,8 +19,10 @@ from langchain_core.output_parsers import StrOutputParser
 # from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 # from langchain_community.chat_message_histories.streamlit import StreamlitChatMessageHistory
 # from langchain.chains import create_stuff_documents_chain 
-from langchain.chains import create_history_aware_retriever, create_retrieval_chain 
 from langchain_community.chat_message_histories import StreamlitChatMessageHistory
+from langchain.chains import create_stuff_documents_chain
+from langchain.chains import create_history_aware_retriever
+from langchain.chains import create_retrieval_chain
 
 __import__('pysqlite3')
 import sys
