@@ -1,7 +1,9 @@
 import os
 import streamlit as st
 
-from langchain.document_loaders import PyPDFLoader
+# from langchain.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader
+
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain.vectorstores import Chroma
@@ -11,15 +13,12 @@ from langchain.chains import create_history_aware_retriever, create_retrieval_ch
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_community.chat_message_histories.streamlit import StreamlitChatMessageHistory
 
-api_key = os.environ.get("OPENAI_API_KEY")
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
-llm = ChatOpenAI(
-    model="gpt-4o-mini",
-    temperature=0,
-    openai_api_key=api_key
-)
-
-os.environ["OPENAI_API_KEY"] = api_key
+from langchain_chroma import Chroma
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
 #cache_resource로 한번 실행한 결과 캐싱해두기
 @st.cache_resource
