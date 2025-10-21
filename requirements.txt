@@ -1,7 +1,7 @@
 streamlit
 langchain
-langchain_community
-langchain_openai
+langchain-community
+langchain-openai
 langchain-core
 langchain-chroma
 pysqlite3-binary
