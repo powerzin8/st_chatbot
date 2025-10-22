@@ -2,33 +2,15 @@ import os
 import streamlit as st
 import tempfile
 
-# from langchain.document_loaders import PyPDFLoader
-# from langchain.text_splitter import RecursiveCharacterTextSplitter
-# from langchain.vectorstores import Chroma
-# from langchain_chroma import Chroma
-# from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
-
-from langchain_community.document_loaders import PyPDFLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain.document_loaders import PyPDFLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.runnables import RunnablePassthrough 
-from langchain_core.output_parsers import StrOutputParser
-
-# from langchain.chains.combine_documents import create_stuff_documents_chain
-# from langchain.chains import create_history_aware_retriever, create_retrieval_chain
-# from langchain_community.chat_message_histories.streamlit import StreamlitChatMessageHistory
-# from langchain.chains import create_stuff_documents_chain 
-from langchain_community.chat_message_histories import StreamlitChatMessageHistory
-
-#from langchain.chains import create_stuff_documents_chain
+from langchain.vectorstores import Chroma
+from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.chains.combine_documents import create_stuff_documents_chain
-
-#from langchain.chains import create_history_aware_retriever
-from langchain.chains.history_aware_retriever import create_history_aware_retriever
-
-# from langchain.chains import create_retrieval_chain
-from langchain.chains.retrieval import create_retrieval_chain
+from langchain.chains import create_history_aware_retriever, create_retrieval_chain
+from langchain_core.runnables.history import RunnableWithMessageHistory
+from langchain_community.chat_message_histories.streamlit import StreamlitChatMessageHistory
 
 __import__('pysqlite3')
 import sys
